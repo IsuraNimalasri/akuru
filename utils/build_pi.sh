@@ -14,7 +14,7 @@ fi
 # Install system dependencies
 echo "[1/4] Installing system dependencies..."
 sudo apt-get update -qq
-sudo apt-get install -y -qq python3-tk python3-venv python3-pip fonts-noto-core
+sudo apt-get install -y -qq python3-tk python3-venv python3-pip fonts-lklug-sinhala fonts-noto-core
 
 # Create virtual environment
 echo "[2/4] Setting up Python environment..."
