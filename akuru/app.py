@@ -27,32 +27,6 @@ def _find_sinhala_font(root):
     return None
 
 
-def _create_cat_image(bg_color):
-    T = bg_color
-    E = "#FF8C00"
-    F = "#FFB347"
-    B = "#2C3E50"
-    P = "#FF69B4"
-
-    cat = [
-        [T, E, T, T, T, T, E, T],
-        [E, E, T, T, T, T, E, E],
-        [E, F, F, F, F, F, F, E],
-        [F, F, B, F, F, B, F, F],
-        [F, F, F, F, F, F, F, F],
-        [F, F, F, P, P, F, F, F],
-        [T, F, F, F, F, F, F, T],
-        [T, T, F, F, F, F, T, T],
-    ]
-
-    base = tk.PhotoImage(width=8, height=8)
-    rows = []
-    for row in cat:
-        rows.append("{" + " ".join(row) + "}")
-    base.put(" ".join(rows))
-    return base.zoom(3, 3)
-
-
 class AkuruApp:
     def __init__(self):
         self.root = tk.Tk()
@@ -72,13 +46,7 @@ class AkuruApp:
         base = sinhala_font or "TkDefaultFont"
         self.font_display = (base, 48)
 
-        self._bob_index = 0
-        self._bob_offset = 0
-
         self._build_ui()
-        self._create_cursor()
-        self._update_cursor_pos()
-        self._animate_bob()
 
         self.root.bind("<Escape>", lambda e: self.root.destroy())
 
@@ -94,7 +62,10 @@ class AkuruApp:
             wrap="word",
             padx=32,
             pady=32,
-            insertwidth=0,
+            insertwidth=6,
+            insertbackground="#E74C3C",
+            insertontime=600,
+            insertofftime=300,
             relief="flat",
             bd=0,
         )
@@ -102,40 +73,6 @@ class AkuruApp:
 
         self.display.bind("<Key>", self._on_key)
         self.display.focus_set()
-
-    def _create_cursor(self):
-        self._cursor_img = _create_cat_image(COLORS["display_bg"])
-        self._cursor_label = tk.Label(
-            self.display,
-            image=self._cursor_img,
-            bg=COLORS["display_bg"],
-            bd=0,
-        )
-        self._cursor_label.bind(
-            "<Button-1>", lambda e: self.display.focus_set()
-        )
-
-    def _update_cursor_pos(self):
-        try:
-            bbox = self.display.bbox("insert")
-            if bbox:
-                x, y, w, h = bbox
-                cat_h = self._cursor_img.height()
-                self._cursor_label.place(
-                    x=x + w,
-                    y=y + h - cat_h + self._bob_offset,
-                )
-            else:
-                self._cursor_label.place_forget()
-        except tk.TclError:
-            pass
-        self.root.after(30, self._update_cursor_pos)
-
-    def _animate_bob(self):
-        seq = [0, -1, -2, -3, -2, -1, 0, 1, 2, 3, 2, 1]
-        self._bob_index = (self._bob_index + 1) % len(seq)
-        self._bob_offset = seq[self._bob_index]
-        self.root.after(120, self._animate_bob)
 
     def _on_key(self, event):
         if event.keysym in ("BackSpace", "Delete"):
