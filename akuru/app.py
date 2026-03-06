@@ -12,6 +12,7 @@ COLORS = {
 
 SINHALA_FONTS = [
     "Noto Sans Sinhala",
+    "LKLUG",
     "Iskoola Pota",
     "UN-Abhaya",
     "Malithi Web",
@@ -38,7 +39,7 @@ class AkuruApp:
         self.root.geometry(f"{screen_w}x{screen_h}+0+0")
 
         try:
-            self.root.attributes("-fullscreen", True)
+            self.root.state("zoomed")
         except tk.TclError:
             pass
 
@@ -86,12 +87,15 @@ class AkuruApp:
                 self.display.delete(f"{line}.{len(line_text) - 1}", pos)
             elif line > 1:
                 self.display.delete(f"{line - 1}.end", pos)
+            self.display.see("insert")
             return "break"
         if event.keysym == "Return":
             self.display.insert("insert", "\n")
+            self.display.see("insert")
             return "break"
         if event.keysym == "space":
             self.display.insert("insert", " ")
+            self.display.see("insert")
             return "break"
         if event.keysym == "Escape":
             return
@@ -99,6 +103,7 @@ class AkuruApp:
         char = event.char
         if char and char in KEY_MAP:
             self.display.insert("insert", KEY_MAP[char])
+            self.display.see("insert")
             return "break"
 
         if char and char.isprintable():
