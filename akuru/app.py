@@ -48,7 +48,7 @@ class AkuruApp:
 
         self._build_ui()
 
-        self.root.bind("<Escape>", lambda e: self.root.destroy())
+        self.root.protocol("WM_DELETE_WINDOW", self.root.destroy)
 
     def _build_ui(self):
         self.root.columnconfigure(0, weight=1)
