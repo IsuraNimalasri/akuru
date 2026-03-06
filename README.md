@@ -59,6 +59,9 @@ python main.py
 
 - **Click** any on-screen Sinhala character button to type it
 - **Physical keyboard** — letters are mapped to Sinhala characters (e.g. `k` → ක, `a` → අ)
+
+![KeyBoard](./KeyBoard.png)
+
 - **Backspace / Clear** — delete the last character or clear everything
 - The display area at the top shows what you've typed
 
