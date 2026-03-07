@@ -6,8 +6,8 @@ from akuru.mappings import KEY_MAP
 
 COLORS = {
     "bg": "#FFF8E7",
-    "display_bg": "#FFF8E7",
-    "display_fg": "#0E5EAF",
+    "display_bg": "#9D803C",
+    "display_fg": "#03111E",
 }
 
 SINHALA_FONTS = [
