@@ -1,0 +1,2 @@
+# Tkinter ships with Python on Raspberry Pi OS.
+# No extra package is required.
