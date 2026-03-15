@@ -22,11 +22,11 @@ echo "  Old installation removed."
 # 2. Remove old build artifacts and rebuild
 echo "[2/3] Cleaning old build and rebuilding..."
 rm -rf build/ dist/ *.spec
-./utils/build_pi.sh
+./akuru/build_pi.sh
 
 # 3. Reinstall
 echo "[3/3] Installing new version..."
-./utils/install_pi.sh
+./akuru/install_pi.sh
 
 echo ""
 echo "=== Done! Akuru has been rebuilt and reinstalled. ==="

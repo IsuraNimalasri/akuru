@@ -67,10 +67,10 @@ This launches a fullscreen typing console similar to Akuru, but focused on Engli
 
 ```bash
 # Build binary on Raspberry Pi
-./utils/build_pi_letters.sh
+./letters/build_pi.sh
 
 # Install desktop launcher
-./utils/install_pi_letters.sh
+./letters/install_pi.sh
 ```
 
 ## Usage
