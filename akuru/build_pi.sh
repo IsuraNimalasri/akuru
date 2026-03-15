@@ -1,8 +1,12 @@
 #!/bin/bash
 set -e
 
-echo "=== Letters - Raspberry Pi Build ==="
+echo "=== Akuru - Raspberry Pi Build ==="
 echo ""
+
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+PROJECT_DIR="$(dirname "$SCRIPT_DIR")"
+cd "$PROJECT_DIR"
 
 # Check we're on Linux (Pi)
 if [[ "$(uname)" != "Linux" ]]; then
@@ -14,7 +18,7 @@ fi
 # Install system dependencies
 echo "[1/4] Installing system dependencies..."
 sudo apt-get update -qq
-sudo apt-get install -y -qq python3-tk python3-venv python3-pip fonts-noto-core
+sudo apt-get install -y -qq python3-tk python3-venv python3-pip fonts-lklug-sinhala fonts-noto-core
 
 # Create virtual environment
 echo "[2/4] Setting up Python environment..."
@@ -32,13 +36,13 @@ echo "[4/4] Building executable..."
 pyinstaller \
     --onefile \
     --windowed \
-    --name letters \
-    --add-data "letters:letters" \
-    letters/main.py
+    --name akuru \
+    --add-data "akuru:akuru" \
+    main.py
 
 echo ""
 echo "=== Build complete! ==="
-echo "Executable: dist/letters"
+echo "Executable: dist/akuru"
 echo ""
 echo "To install as a desktop app, run:"
-echo "  ./utils/install_pi_letters.sh"
+echo "  ./akuru/install_pi.sh"

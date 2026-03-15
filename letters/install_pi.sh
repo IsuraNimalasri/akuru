@@ -3,13 +3,17 @@ set -e
 
 echo "=== Installing Letters as desktop app ==="
 
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+PROJECT_DIR="$(dirname "$SCRIPT_DIR")"
+cd "$PROJECT_DIR"
+
 INSTALL_DIR="$HOME/.local/share/letters"
 BIN_DIR="$HOME/.local/bin"
 DESKTOP_DIR="$HOME/.local/share/applications"
 
 # Check executable exists
 if [ ! -f "dist/letters" ]; then
-    echo "ERROR: dist/letters not found. Run ./utils/build_pi_letters.sh first."
+    echo "ERROR: dist/letters not found. Run ./letters/build_pi.sh first."
     exit 1
 fi
 

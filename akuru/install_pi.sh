@@ -3,13 +3,17 @@ set -e
 
 echo "=== Installing Akuru as desktop app ==="
 
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+PROJECT_DIR="$(dirname "$SCRIPT_DIR")"
+cd "$PROJECT_DIR"
+
 INSTALL_DIR="$HOME/.local/share/akuru"
 BIN_DIR="$HOME/.local/bin"
 DESKTOP_DIR="$HOME/.local/share/applications"
 
 # Check executable exists
 if [ ! -f "dist/akuru" ]; then
-    echo "ERROR: dist/akuru not found. Run ./build_pi.sh first."
+    echo "ERROR: dist/akuru not found. Run ./akuru/build_pi.sh first."
     exit 1
 fi
 
