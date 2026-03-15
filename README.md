@@ -55,6 +55,24 @@ pip install -r requirements.txt
 python main.py
 ```
 
+### Run English Letters App
+
+```bash
+python -m letters.main
+```
+
+This launches a fullscreen typing console similar to Akuru, but focused on English letters (`A-Z` / `a-z`), space, enter, and backspace.
+
+### Raspberry Pi Desktop Install (English Letters)
+
+```bash
+# Build binary on Raspberry Pi
+./utils/build_pi_letters.sh
+
+# Install desktop launcher
+./utils/install_pi_letters.sh
+```
+
 ## Usage
 
 - **Click** any on-screen Sinhala character button to type it
