@@ -63,6 +63,29 @@ Optional RoboHash download during build:
 ./build.sh --with-robohash
 ```
 
+## Raspberry Pi desktop app scripts
+
+Build and install as a desktop game app:
+
+```bash
+./build_pi.sh
+./install_pi.sh
+```
+
+Optional RoboHash download during Pi build:
+
+```bash
+./build_pi.sh --with-robohash
+```
+
+What `install_pi.sh` does:
+- creates/uses `.venv`
+- installs requirements
+- creates desktop launcher files:
+  - `~/.local/share/applications/happy-number-keys.desktop`
+  - `~/Desktop/happy-number-keys.desktop`
+- uses `logo.png` as app icon
+
 If you use a virtual environment:
 
 ```bash
